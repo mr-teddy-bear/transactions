@@ -1,10 +1,14 @@
-import dotenv from 'dotenv';
+// require("@babel/register")();
+// require("@babel/polyfill");
+// require("./src/server.js");
+
+
+
 import app from './src/app.js';
 import config from './src/config/environment.js';
 
-//dotenv.config();
 const { app: { port } } = config;
-//const port = process.env.APP_PORT
+
 
 
 

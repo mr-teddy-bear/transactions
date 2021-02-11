@@ -2,8 +2,4 @@ node_modules
 logs
 .env
 .env.development
-<<<<<<< HEAD
 .vscode/launch.json
-=======
-.vscode/launch.json
->>>>>>> 66e4513fe936ad437190559a8a83957c0896b80e

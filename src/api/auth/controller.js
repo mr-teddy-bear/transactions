@@ -21,7 +21,7 @@ const regController = async (req, res) => {
             message: `Создан пользователь email: ${email} и паролем ${newUser.password}`
         });
     } catch (e) {
-        res.status(500).json({ message: e.message || 'Что-то пошло не так...' });
+        res.status(400).json({ message: e.message || 'Bad request' });
     }
 };
 

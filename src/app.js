@@ -11,4 +11,18 @@ app.use(express.urlencoded({ extended: false }));
 initializeDbMongo(() => { })
 app.use('/', router)
 
+
+//Not real endpoint
+app.get('*', function(req, res, next) {
+    const err = new Error('Page Not Found');
+    err.statusCode = 404;
+    next(err);
+  });
+
+  //all error
+  app.use(function (err, req, res, next) {
+    console.error(err.stack)
+    res.status(500).send('Something broke!')
+  })
+
 export default app;

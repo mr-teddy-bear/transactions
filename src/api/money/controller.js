@@ -29,7 +29,7 @@ const addTransactionController = async (req, res) => {
         const newTransaction = await addTransaction(title, type, sumOperation, userId);
         res.json({ message: `Произведена транзакция ${title},  currentMoney: ${newTransaction.currentMoney}` });
     } catch (e) {
-        res.status(500).json({ message: e.message || 'Что-то пошло не так...' });
+        res.status(400).json({ message: e.message || 'Bad request...' });
     }
 };
 
