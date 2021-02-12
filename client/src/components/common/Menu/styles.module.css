@@ -1,0 +1,45 @@
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 120px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.logo {
+  background: #f03226;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+}
+.logoImg {
+  width: 40%;
+}
+.squareContainer {
+  height: 10%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: transparent;
+  cursor: pointer;
+}
+.squareText {
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 19px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1px;
+  transition: color 0.4s;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+.squareContainer.active {
+  background: #fff;
+}
+.squareContainer.active .squareText {
+  color: red;
+}
