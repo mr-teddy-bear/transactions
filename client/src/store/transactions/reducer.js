@@ -15,6 +15,28 @@ const initialState = {
     name: "Соколовский Максим Андреевич",
     position: "Индивидуальный предприниматель",
   },
+  accounts: [
+    {
+      number: "30257895840700000000",
+      money: 123,
+    },
+  ],
+  operations: [
+    {
+      id: 1,
+      title: "Post money to",
+      type: "min",
+      sumOperation: 20,
+      date: "2021/02/08 18:31",
+    },
+    {
+      id: 2,
+      title: "Get money from",
+      type: "plus",
+      sumOperation: 15,
+      date: "2021/05/02 18:31",
+    },
+  ],
 };
 
 function transactionsReducer(state = initialState, { type, payload }) {
