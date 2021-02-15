@@ -1,21 +1,3 @@
-.menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 120px;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-.logo {
-  background: #f03226;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10%;
-}
-.logoImg {
-  width: 40%;
-}
 .squareContainer {
   height: 10%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
@@ -25,6 +7,9 @@
   flex-direction: column;
   background-color: transparent;
   cursor: pointer;
+}
+.squareIcon {
+  width: 25px;
 }
 .squareText {
   font-weight: 700;
@@ -36,13 +21,9 @@
   margin-top: 10px;
   text-transform: uppercase;
 }
-
 .squareContainer.active {
   background: #fff;
 }
 .squareContainer.active .squareText {
   color: red;
-}
-.link {
-  text-decoration: none;
 }

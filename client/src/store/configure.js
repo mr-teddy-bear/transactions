@@ -1,8 +1,5 @@
 import { createStore, compose, applyMiddleware } from 'redux';
-import { routerMiddleware } from 'react-router-redux';
-import {} from 'react-router'
 import thunk from 'redux-thunk';
-import history from './history';
 import rootReducer from './reducer';
 
 const getInitialState = () => {

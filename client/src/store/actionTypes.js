@@ -1,0 +1,1 @@
+export const CHANGE_ACTIVE_LINK = 'CHANGE_ACTIVE_LINK';

@@ -10,7 +10,7 @@ import history from './store/history';
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter history={history}>
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </Provider>,

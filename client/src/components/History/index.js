@@ -3,7 +3,7 @@ import Menu from '../common/Menu'
 import styles from './styles.module.css';
 
 
-function Home(){
+function History(){
     return(
         <div className={styles.main}>
             <Menu/>
@@ -12,4 +12,4 @@ function Home(){
     )
 }
 
-export default Home;
+export default History;
