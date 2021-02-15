@@ -4,6 +4,7 @@
   left: 0;
   bottom: 0;
   width: 120px;
+  z-index: 1;
   background-color: rgba(0, 0, 0, 0.4);
 }
 .logo {
@@ -45,4 +46,6 @@
 }
 .link {
   text-decoration: none;
+  height: 10%;
+  display: flex;
 }

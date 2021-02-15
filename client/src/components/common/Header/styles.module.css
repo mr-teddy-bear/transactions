@@ -1,0 +1,79 @@
+.header {
+  min-height: 140px;
+  background-color: transparent;
+}
+.wrapper {
+  width: 100%;
+  margin: 0;
+  padding-left: 140px;
+  padding-right: 40px;
+  padding-top: 38px;
+  padding-bottom: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.callBlock {
+  display: flex;
+  align-items: center;
+}
+.phoneNumber {
+  font-size: 16px;
+  line-height: 22px;
+  color: #fff;
+  margin-left: 10px;
+  font-weight: 400;
+}
+.title {
+  font-size: 44px;
+  line-height: 58px;
+  font-weight: 100;
+  color: #fff;
+}
+.rightSide {
+  display: flex;
+}
+.user {
+  display: flex;
+  margin-left: 35px;
+  align-items: center;
+}
+.logo {
+  height: 40px;
+  background: #999999;
+  padding: 7px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.userInfo:hover .userName {
+  color: #fff;
+  transition: 0.2s color;
+}
+.userName {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 22px;
+  color: #afb4b0;
+}
+.userPosition {
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
+  background-repeat: repeat-x;
+  background-size: 3px 1px;
+  background-position: 1px 1.15em;
+  text-decoration: none;
+  background-clip: content-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  color: #fff;
+  transition: 0.2s color;
+}

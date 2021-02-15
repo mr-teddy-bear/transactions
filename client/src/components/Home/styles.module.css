@@ -15,5 +15,21 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  position: fixed;
   overflow-y: scroll;
+}
+.content {
+  position: absolute;
+  padding-left: 120px;
+  top: 0;
+  width: 100%;
+}
+
+.wrapper {
+  padding: 0 140px;
+  display: flex;
+  justify-content: space-between;
+}
+.firstColumn {
+  width: 60%;
 }
