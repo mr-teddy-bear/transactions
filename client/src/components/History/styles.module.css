@@ -24,3 +24,132 @@
   top: 0;
   width: 100%;
 }
+.wrapper {
+  padding: 0 140px;
+  display: flex;
+  justify-content: space-between;
+}
+.firstColumn {
+  width: 60%;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  height: 50px;
+  border-radius: 4px 4px 0 0;
+}
+.titleText {
+  margin-left: 24px;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+}
+.settingsIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  fill: rgba(255, 255, 255, 0.6);
+  transition: 0.4s fill;
+}
+.settingsIcon:hover {
+  cursor: pointer;
+  fill: rgba(255, 255, 255, 1);
+  transition: 0.4s fill;
+}
+
+.filtredBtn {
+  width: 100%;
+  background: #f5f7f7;
+}
+.eventBtn {
+  background: transparent;
+  outline: none;
+  border: none;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  color: #1c75a8;
+  transition: color 0.15s;
+  padding: 18px 30px 14px 30px;
+  cursor: pointer;
+}
+.eventBtn:hover {
+  color: #ff0000;
+}
+.eventBtn.active {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000;
+  background: #fff;
+}
+.eventBtn.active:hover {
+  color: #000;
+}
+.events {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+.event {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-bottom: 1px solid rgba(59, 95, 144, 0.08);
+  box-shadow: none;
+  padding: 14px 0;
+}
+.event:last-child {
+  border-radius: 0 0 4px 4px;
+}
+.event:hover {
+  position: relative;
+  box-shadow: 0 5px 20px 0 rgb(240 50 38 / 40%);
+  z-index: 1;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+.eventDate {
+  padding: 0 25px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 0.6);
+  transition: color 0.15s;
+}
+.eventInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 30px;
+}
+.eventTitle {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 22px;
+  color: #000;
+  text-transform: uppercase;
+  transition: color 0.15s;
+}
+.eventStatus {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.statusIcon {
+  margin-right: 10px;
+}
+.eventStatus.old {
+  color: #00980e;
+}
+.eventStatus.new {
+  color: #f03226;
+}
