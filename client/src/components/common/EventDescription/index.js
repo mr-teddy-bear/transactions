@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styles from "./styles.module.css";
-import { ReactComponent as Topic } from "../../../assets/img/notes.svg";
 import { ReactComponent as CloseIcon } from "../../../assets/img/close.svg";
 
 function EventDetails({ closeDescription, eventId }) {
