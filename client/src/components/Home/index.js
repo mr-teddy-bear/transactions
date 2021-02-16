@@ -4,6 +4,7 @@ import Header from "../common/Header";
 import { ReactComponent as Settings } from "../../assets/img/settings.svg";
 import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
+import Events from "../common/Events";
 
 function Home() {
   const accounts = useSelector((state) => state.transactions.accounts);
@@ -55,9 +56,33 @@ function Home() {
                 <Settings className={styles.settingsIcon} />
               </div>
               <div className={styles.filtredBtn}>
-                <button onClick={() => setFilter("all")}>Все</button>
-                <button onClick={() => setFilter("min")}>Входящие</button>
-                <button onClick={() => setFilter("plus")}>Исходящие</button>
+                <button
+                  className={[
+                    styles.lastOperationBtn,
+                    filter === "all" ? styles.active : "",
+                  ].join(" ")}
+                  onClick={() => setFilter("all")}
+                >
+                  Все
+                </button>
+                <button
+                  className={[
+                    styles.lastOperationBtn,
+                    filter === "min" ? styles.active : "",
+                  ].join(" ")}
+                  onClick={() => setFilter("min")}
+                >
+                  Исходящие
+                </button>
+                <button
+                  className={[
+                    styles.lastOperationBtn,
+                    filter === "plus" ? styles.active : "",
+                  ].join(" ")}
+                  onClick={() => setFilter("plus")}
+                >
+                  Входящие
+                </button>
               </div>
               <div className={styles.operations}>
                 {filtredOperations.map((operation) => {
@@ -78,7 +103,8 @@ function Home() {
                               : styles.min,
                           ].join(" ")}
                         >
-                          {operation.sumOperation}
+                          {operation.type === "plus" ? "+" : "-"}
+                          {operation.sumOperation}.00 BYN
                         </h3>
                       </div>
                     </div>
@@ -87,7 +113,9 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className={styles.secondColumn}></div>
+          <div className={styles.secondColumn}>
+            <Events />
+          </div>
         </div>
       </div>
     </div>
