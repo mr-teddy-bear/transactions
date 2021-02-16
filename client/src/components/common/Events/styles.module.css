@@ -1,6 +1,7 @@
 .main {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 4px 4px 0 0;
+  margin-bottom: 50px;
 }
 .title {
   display: flex;

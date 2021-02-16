@@ -5,6 +5,7 @@ import { ReactComponent as Settings } from "../../assets/img/settings.svg";
 import styles from "./styles.module.css";
 import { useSelector } from "react-redux";
 import Events from "../common/Events";
+import ValuteCourse from "../common/ValuteCourse";
 
 function Home() {
   const accounts = useSelector((state) => state.transactions.accounts);
@@ -115,6 +116,7 @@ function Home() {
           </div>
           <div className={styles.secondColumn}>
             <Events />
+            <ValuteCourse />
           </div>
         </div>
       </div>
