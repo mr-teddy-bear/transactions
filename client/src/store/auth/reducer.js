@@ -15,8 +15,7 @@ const initialState = {
   user: {},
   error: "",
   isRegistred: false,
-  regModal: false,
-  message: "",
+  message: "фыв",
 };
 
 function loginReducer(state = initialState, { type, payload }) {

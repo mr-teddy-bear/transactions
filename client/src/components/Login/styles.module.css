@@ -87,6 +87,9 @@
   bottom: 20px;
   color: #a29e9a;
 }
+.formInput.inputError {
+  border-color: #f03226;
+}
 .forgetDemo {
   margin-top: 10px;
   display: flex;
@@ -135,4 +138,18 @@
   box-shadow: 0 10px 20px 0 rgb(240 50 38 / 40%);
   background-color: #f03226;
   border-color: #000;
+}
+
+.main > .preload {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.6);
+  z-index: 10;
+  width: 100%;
 }

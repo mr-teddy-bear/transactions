@@ -9,7 +9,8 @@ import {
   LOG_OUT,
   CHANGE_MESSAGE,
 } from "../actionTypes";
-//import setAuthTokenHeader from "services/api/configure";
+import setAuthTokenHeader from "../../services/configure";
+import history from "../history";
 //import history from "../history";
 
 export function loginRequest() {
@@ -64,12 +65,12 @@ export function changeMessage(text) {
 export const login = (userData) => async (dispatch) => {
   dispatch(loginRequest());
   try {
-    const response = await axios.post("/login", userData);
+    const response = await axios.post("http://localhost:3001/login", userData);
     const { token, ...user } = response.data;
-    //setAuthTokenHeader(token);
+    setAuthTokenHeader(token);
     localStorage.setItem("token", token);
-    //history.push("/contacts?page=1");
     dispatch(loginSuccess(user));
+    history.push("/home");
   } catch (e) {
     dispatch(loginFailure(e.message));
   }
