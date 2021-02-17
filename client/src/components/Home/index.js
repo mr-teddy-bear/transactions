@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Menu from "../common/Menu";
 import Header from "../common/Header";
 import { ReactComponent as Settings } from "../../assets/img/settings.svg";
 import styles from "./styles.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Events from "../common/Events";
 import ValuteCourse from "../common/ValuteCourse";
+import { getMoney, getTransactions } from "../../store/transactions/actions";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 function Home() {
-  const accounts = useSelector((state) => state.transactions.accounts);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getMoney());
+    dispatch(getTransactions());
+  }, [dispatch]);
+  const account = useSelector((state) => state.transactions.accounts);
   const operations = useSelector((state) => state.transactions.operations);
+  const isRequesting = useSelector((state) => state.transactions.isRequesting);
   let filtredOperations = [];
   const [filter, setFilter] = useState("all");
 
@@ -20,6 +28,11 @@ function Home() {
       }));
   return (
     <div className={styles.main}>
+      {isRequesting && (
+        <div className={styles.preload}>
+          <CircularProgress />
+        </div>
+      )}
       <Menu />
       <div className={styles.content}>
         <Header />
@@ -31,7 +44,7 @@ function Home() {
                 <Settings className={styles.settingsIcon} />
               </div>
               <div className={styles.accounts}>
-                {accounts.map((account) => {
+                {/* {accounts.map((account) => {
                   return (
                     <div key={account.number} className={styles.account}>
                       <div className={styles.accountInfo}>
@@ -47,7 +60,22 @@ function Home() {
                       </h3>
                     </div>
                   );
-                })}
+                })} */}
+                {
+                  <div className={styles.account}>
+                    <div className={styles.accountInfo}>
+                      <h3 className={styles.accountTitle}>
+                        Текущий (расчетный)
+                      </h3>
+                      <span className={styles.accountNumber}>
+                        BY63ALFA{account.number}
+                      </span>
+                    </div>
+                    <h3 className={styles.cash}>
+                      <b>{account.money}</b> BYN
+                    </h3>
+                  </div>
+                }
               </div>
             </div>
 
@@ -86,31 +114,38 @@ function Home() {
                 </button>
               </div>
               <div className={styles.operations}>
-                {filtredOperations.map((operation) => {
-                  return (
-                    <div key={operation.id} className={styles.operation}>
-                      <div className={styles.operationDate}>
-                        {operation.date}
+                {filtredOperations
+                  .map((operation, index, array) => {
+                    return (
+                      <div key={operation.id} className={styles.operation}>
+                        <div className={styles.operationDate}>
+                          {("0" + new Date(operation.date).getDate()).slice(-2)}
+                          /
+                          {(
+                            "0" +
+                            (new Date(operation.date).getMonth() + 1)
+                          ).slice(-2)}
+                        </div>
+                        <div className={styles.operationsInfo}>
+                          <h3 className={styles.operationTitle}>
+                            {operation.title}
+                          </h3>
+                          <h3
+                            className={[
+                              styles.operationMoney,
+                              operation.type === "plus"
+                                ? styles.plus
+                                : styles.min,
+                            ].join(" ")}
+                          >
+                            {operation.type === "plus" ? "+" : ""}
+                            {operation.sumOperation}.00 BYN
+                          </h3>
+                        </div>
                       </div>
-                      <div className={styles.operationsInfo}>
-                        <h3 className={styles.operationTitle}>
-                          {operation.title}
-                        </h3>
-                        <h3
-                          className={[
-                            styles.operationMoney,
-                            operation.type === "plus"
-                              ? styles.plus
-                              : styles.min,
-                          ].join(" ")}
-                        >
-                          {operation.type === "plus" ? "+" : "-"}
-                          {operation.sumOperation}.00 BYN
-                        </h3>
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })
+                  .reverse()}
               </div>
             </div>
           </div>

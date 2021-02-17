@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logo } from "../../assets";
@@ -8,11 +8,19 @@ import { login, changeMessage } from "../../store/auth/actions";
 import validationSchema from "./validationLoginSchema";
 import { Formik } from "formik";
 import SnackBar from "../common/SnackBar";
+import history from "../../store/history";
 
 function Login() {
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  useEffect(() => {
+    if (isAuth) {
+      history.push("/home");
+    }
+  }, [isAuth]);
   const dispatch = useDispatch();
   const isRequesting = useSelector((state) => state.auth.isRequesting);
   const dialogMessage = useSelector((state) => state.auth.message);
+
   return (
     <div className={styles.main}>
       {isRequesting && (
@@ -84,22 +92,6 @@ function Login() {
             </form>
           )}
         </Formik>
-
-        {/* <form action="" className={styles.form}>
-          <h1 className={styles.formTitle}>Интернет-Банк для бизнеса</h1>
-          <input
-            className={styles.formInput}
-            placeholder="E-mail"
-            type="text"
-            required
-          />
-          <input
-            className={styles.formInput}
-            placeholder="Password"
-            type="password"
-            required
-          />
-        </form> */}
       </div>
       {!!dialogMessage && (
         <SnackBar

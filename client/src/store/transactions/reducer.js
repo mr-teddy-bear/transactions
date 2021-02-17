@@ -9,7 +9,15 @@ import {
   russia,
   europe,
 } from "../../assets";
-import { CHANGE_ACTIVE_LINK } from "../actionTypes";
+import {
+  CHANGE_ACTIVE_LINK,
+  GET_MONEY_SUCCESS,
+  GET_MONEY_REQUEST,
+  GET_MONEY_FAILURE,
+  GET_TRANSACTIONS_FAILURE,
+  GET_TRANSACTIONS_REQUEST,
+  GET_TRANSACTIONS_SUCCESS,
+} from "../actionTypes";
 
 const initialState = {
   links: [
@@ -19,68 +27,18 @@ const initialState = {
     { id: 4, title: "Обмен валют", imgSrc: valute, to: "valute" },
     { id: 5, title: "Настройки", imgSrc: gears, to: "settings" },
   ],
+  isRequesting: false,
+  message: "",
   activeLink: 1,
   user: {
     name: "Соколовский Максим Андреевич",
     position: "Индивидуальный предприниматель",
   },
-  accounts: [
-    {
-      number: "30257895840700000000",
-      money: 123,
-    },
-  ],
-  operations: [
-    {
-      id: 1,
-      title: "Post money to person Ivanov Ivan",
-      type: "min",
-      sumOperation: 20,
-      date: "10/02",
-    },
-    {
-      id: 2,
-      title: "Get money from organization CherryTime ",
-      type: "plus",
-      sumOperation: 15,
-      date: "11/02",
-    },
-    {
-      id: 3,
-      title: "Payed for active bill",
-      type: "min",
-      sumOperation: 26,
-      date: "12/02",
-    },
-    {
-      id: 4,
-      title: "Closing credit or monthly paid ",
-      type: "min",
-      sumOperation: 89,
-      date: "13/02",
-    },
-    {
-      id: 5,
-      title: "Sallary",
-      type: "plus",
-      sumOperation: 413,
-      date: "14/02",
-    },
-    {
-      id: 6,
-      title: "Get money from Shedav Viacheslav",
-      type: "plus",
-      sumOperation: 15,
-      date: "15/02",
-    },
-    {
-      id: 7,
-      title: "Closing credit of the car",
-      type: "min",
-      sumOperation: 170,
-      date: "16/02",
-    },
-  ],
+  accounts: {
+    number: "30257895840700000000",
+    money: null,
+  },
+  operations: [],
   events: [
     {
       id: 1,
@@ -136,13 +94,40 @@ function transactionsReducer(state = initialState, { type, payload }) {
         ...state,
         activeLink: payload,
       };
-    //   case LOGIN_SUCCESS:
-    //     return {
-    //       ...state,
-    //       user: { username: payload.user },
-    //       isAuth: true,
-    //       isRequesting: false,
-    //     };
+    case GET_MONEY_REQUEST:
+      return {
+        ...state,
+        isRequesting: true,
+      };
+    case GET_MONEY_SUCCESS:
+      return {
+        ...state,
+        accounts: { ...state.accounts, money: payload },
+        isRequesting: false,
+      };
+    case GET_MONEY_FAILURE:
+      return {
+        ...state,
+        isRequesting: false,
+        message: payload,
+      };
+    case GET_TRANSACTIONS_REQUEST:
+      return {
+        ...state,
+        isRequesting: true,
+      };
+    case GET_TRANSACTIONS_SUCCESS:
+      return {
+        ...state,
+        operations: [...payload],
+        isRequesting: false,
+      };
+    case GET_TRANSACTIONS_FAILURE:
+      return {
+        ...state,
+        isRequesting: false,
+        message: payload,
+      };
     default:
       return state;
   }

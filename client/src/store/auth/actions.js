@@ -3,9 +3,6 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  REG_FAILURE,
-  REG_REQUEST,
-  REG_SUCCESS,
   LOG_OUT,
   CHANGE_MESSAGE,
 } from "../actionTypes";
@@ -27,22 +24,6 @@ export function loginSuccess(user) {
 export function loginFailure(error) {
   return {
     type: LOGIN_FAILURE,
-    payload: error,
-  };
-}
-export function regRequest() {
-  return {
-    type: REG_REQUEST,
-  };
-}
-export function regSuccess() {
-  return {
-    type: REG_SUCCESS,
-  };
-}
-export function regFailure(error) {
-  return {
-    type: REG_FAILURE,
     payload: error,
   };
 }

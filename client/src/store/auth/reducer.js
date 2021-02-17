@@ -2,9 +2,6 @@ import {
   LOGIN_FAILURE,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
-  REG_FAILURE,
-  REG_SUCCESS,
-  REG_REQUEST,
   LOG_OUT,
   CHANGE_MESSAGE,
 } from "../actionTypes";
@@ -39,24 +36,7 @@ function loginReducer(state = initialState, { type, payload }) {
         ...state,
         isRequesting: true,
       };
-    case REG_FAILURE:
-      return {
-        ...state,
-        error: payload,
-        isRequesting: false,
-        message: "Пользователь уже существует",
-      };
-    case REG_SUCCESS:
-      return {
-        ...state,
-        isRequesting: false,
-        message: "Вы зарегестрировались:)",
-      };
-    case REG_REQUEST:
-      return {
-        ...state,
-        isRequesting: true,
-      };
+
     case LOG_OUT:
       return {
         ...state,
